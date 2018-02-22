@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password:
+  host: postgres
+  port: 5432
+
+development:
+  <<: *default
+  database: nutrition-api_development
+
+test:
+  <<: *default
+  database: nutrition-api_test
+
+production:
+  <<: *default
+  database: nutrition-api_production
+  username: nutrition-api
+  password: <%= ENV['NUTRITION-API_DATABASE_PASSWORD'] %>
